@@ -33,34 +33,34 @@ services:
       - "8001:8001"
     volumes:
       - "./nginx.conf:/etc/nginx/nginx.conf:ro"
-      - "./go-benchmark.conf:/etc/nginx/conf.d/go-benchmark.conf:ro"
+      - "./whoami.conf:/etc/nginx/conf.d/whoami.conf:ro"
 
-  go-benchmark-1:
+  whoami-1:
     image: "containous/whoami"
     ports:
-      - "9000:80"
+      - "8003:80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.traefik`)"
+      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.whoami`)"
       - "traefik.http.services.go-benchmark.loadbalancer.server.port=80"
 
-  go-benchmark-2:
+  whoami-2:
     image: "containous/whoami"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.traefik`)"
+      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.whoami`)"
       - "traefik.http.services.go-benchmark.loadbalancer.server.port=80"
 
-  go-benchmark-3:
+  whoami-3:
     image: "containous/whoami"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.traefik`)"
+      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.whoami`)"
       - "traefik.http.services.go-benchmark.loadbalancer.server.port=80"
 
-  go-benchmark-4:
+  whoami-4:
     image: "containous/whoami"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.traefik`)"
+      - "traefik.http.routers.go-benchmark.rule=Host(`benchmark.whoami`)"
       - "traefik.http.services.go-benchmark.loadbalancer.server.port=80"
